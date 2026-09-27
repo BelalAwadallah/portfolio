@@ -8,6 +8,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { ScrollTrackingService } from '../../core/services/scroll-tracking.service';
 import { ButtonModule } from 'primeng/button';
+import { ThemeToggleComponent } from '../../shared/components/theme-toggle/theme-toggle.component';
 
 interface NavItem {
   readonly id: string;
@@ -17,7 +18,7 @@ interface NavItem {
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, ButtonModule],
+  imports: [CommonModule, ButtonModule, ThemeToggleComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

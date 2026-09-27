@@ -1,0 +1,134 @@
+:host {
+  display: inline-block;
+}
+
+.theme-toggle-btn {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-light);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 0;
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  outline: none;
+
+  &:hover {
+    transform: translateY(-1.5px) scale(1.04);
+    border-color: var(--accent-maroon);
+    color: var(--accent-maroon);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.96);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent-maroon);
+    outline-offset: 2px;
+  }
+}
+
+.icon-stage {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.sun-icon,
+.moon-icon {
+  position: absolute;
+  inset: 0;
+  width: 20px;
+  height: 20px;
+  transition: transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1),
+              opacity 350ms ease;
+}
+
+/* Light mode defaults: Sun is visible, Moon is rotated out */
+.sun-icon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+  color: #D97706; /* warm rich amber */
+}
+
+.moon-icon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.4);
+  color: #E05263; /* vibrant glowing ruby */
+}
+
+/* Dark mode active state: Sun rotates away, Moon blooms into view */
+.is-dark {
+  .sun-icon {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.4);
+  }
+
+  .moon-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+    filter: drop-shadow(0 0 6px rgba(224, 82, 99, 0.5));
+  }
+}
+
+/* Pill variant for mobile drawer */
+.theme-toggle-pill {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-radius: 14px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 250ms ease;
+
+  &:hover {
+    border-color: var(--accent-maroon);
+    background: var(--bg-card-subtle);
+  }
+
+  .pill-icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--bg-base);
+  }
+
+  .pill-badge {
+    background: var(--bg-base);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-light);
+  }
+
+  &.is-dark .pill-badge {
+    background: rgba(224, 82, 99, 0.15);
+    color: #E05263;
+    border-color: rgba(224, 82, 99, 0.3);
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

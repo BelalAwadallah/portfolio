@@ -6,12 +6,16 @@
 
 :root {
   --bg-base: #F7F4F2;
+  --bg-base-rgb: 247 244 242;
   --bg-card: #FFFFFF;
+  --bg-card-rgb: 255 255 255;
+  --bg-card-subtle: #FAF8F6;
   --text-primary: #1A1A1A;
   --text-secondary: #707070;
   --text-muted: #96918D;
   --accent-maroon: #3C1516;
   --accent-maroon-hover: #512024;
+  --accent-maroon-glow: rgba(60, 21, 22, 0.15);
   --border-light: #E5E1DD;
   --dark-surface: #1A1A1A;
   --dark-surface-soft: #292323;
@@ -30,14 +34,56 @@
   --duration-normal: 550ms;
 }
 
-*, *::before, *::after {                                                                                                                                                                                
+/* ── World-Class Dark Mode Color Palette ──
+   Rich obsidian base with warm dark slate cards, hairline borders,
+   and radiant luminous ruby / wine accent highlights */
+.dark {
+  --bg-base: #0C0C0E;
+  --bg-base-rgb: 12 12 14;
+  --bg-card: #151419;
+  --bg-card-rgb: 21 20 25;
+  --bg-card-subtle: #1C1B22;
+  --text-primary: #F7F5F2;
+  --text-secondary: #A8A29D;
+  --text-muted: #736E69;
+  --accent-maroon: #E05263;
+  --accent-maroon-hover: #F06677;
+  --accent-maroon-glow: rgba(224, 82, 99, 0.32);
+  --border-light: rgba(255, 255, 255, 0.09);
+  --dark-surface: #0C0C0E;
+  --dark-surface-soft: #16151B;
+  --dark-text: #F7F5F2;
+
+  --shadow-soft: 0 20px 45px rgba(0, 0, 0, 0.45);
+  --shadow-frame: 0 24px 48px -12px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+*, *::before, *::after {
   box-sizing: border-box;
+}
+
+/* Ultra-smooth theme transition on toggle */
+html.theme-transitioning,
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
+  transition: background-color 380ms cubic-bezier(0.23, 1, 0.32, 1),
+              border-color 380ms cubic-bezier(0.23, 1, 0.32, 1),
+              color 300ms cubic-bezier(0.23, 1, 0.32, 1),
+              fill 300ms cubic-bezier(0.23, 1, 0.32, 1),
+              stroke 300ms cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 380ms cubic-bezier(0.23, 1, 0.32, 1) !important;
 }
 
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
   background-color: var(--bg-base);
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 body {
@@ -61,7 +107,7 @@ h1, h2, h3, h4, .font-serif {
 /* Custom Selection */
 ::selection {
   background-color: var(--accent-maroon);
-  color: #FFFFFF;                                                       
+  color: #FFFFFF;
 }
 
 /* Presentation Frame (Jamie/device-mockup inspired showcase) */
@@ -78,12 +124,11 @@ h1, h2, h3, h4, .font-serif {
   }
 }
 
-/* Scroll Reveal Classes */
+/* Scroll Reveal Classes - Always visible and smoothly rendered */
 .reveal-init {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 650ms var(--ease-editorial), transform 650ms var(--ease-editorial);
-  will-change: opacity, transform;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms var(--ease-editorial), transform 500ms var(--ease-editorial);
 
   &.is-revealed {
     opacity: 1;
@@ -421,6 +466,60 @@ a.liquid-glass-maroon {
       inset 0 -2px 5px rgba(0, 0, 0, 0.6),
       0 18px 42px -4px rgba(60, 21, 22, 0.45),
       0 4px 14px rgba(0, 0, 0, 0.15) !important;
+  }
+}
+
+/* ── Dark Mode Liquid Glass Adaptation ── */
+.dark {
+  button.liquid-glass-clear,
+  .p-button.liquid-glass-clear,
+  a.liquid-glass-clear {
+    background: linear-gradient(180deg, rgba(32, 30, 38, 0.85) 0%, rgba(18, 17, 22, 0.9) 100%) !important;
+    color: #F7F5F2 !important;
+    border-top: 1.5px solid rgba(255, 255, 255, 0.22) !important;
+    border-left: 1.5px solid rgba(255, 255, 255, 0.12) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5) !important;
+
+    box-shadow: 
+      inset 0 1.5px 2px rgba(255, 255, 255, 0.2),
+      inset 1.5px 1px 3px rgba(0, 0, 0, 0.4),
+      inset 0 -1.5px 2px rgba(0, 0, 0, 0.4),
+      0 12px 32px -4px rgba(0, 0, 0, 0.5),
+      0 2px 8px rgba(0, 0, 0, 0.25) !important;
+
+    .p-button-label {
+      color: #F7F5F2 !important;
+    }
+
+    .p-button-icon {
+      color: #E05263 !important;
+    }
+
+    &::after {
+      mix-blend-mode: screen;
+    }
+
+    &:hover {
+      border-top-color: rgba(255, 255, 255, 0.35) !important;
+      box-shadow: 
+        inset 0 2px 3px rgba(255, 255, 255, 0.28),
+        inset 2px 1.5px 4px rgba(0, 0, 0, 0.5),
+        0 16px 38px -4px rgba(0, 0, 0, 0.65),
+        0 4px 12px rgba(0, 0, 0, 0.35) !important;
+    }
+  }
+
+  button.liquid-glass-maroon,
+  .p-button.liquid-glass-maroon,
+  a.liquid-glass-maroon {
+    background: linear-gradient(135deg, rgba(175, 42, 58, 0.95) 0%, rgba(110, 20, 32, 0.95) 100%) !important;
+    border-top: 1.5px solid rgba(255, 255, 255, 0.42) !important;
+    box-shadow: 
+      inset 0 1.5px 2px rgba(255, 255, 255, 0.45),
+      inset 0 -2px 5px rgba(0, 0, 0, 0.6),
+      0 12px 32px -4px rgba(224, 82, 99, 0.35),
+      0 2px 8px rgba(0, 0, 0, 0.25) !important;
   }
 }
 

@@ -31,6 +31,26 @@
   will-change: stroke-dashoffset, opacity, transform;
 }
 
+.path-layer-1 {
+  stroke: #1A1A1A;
+}
+
+.path-layer-2 {
+  stroke: #3C1516;
+}
+
+:host-context(.dark) .path-layer-1,
+:host-context(html.dark) .path-layer-1,
+.dark .path-layer-1 {
+  stroke: #FFFFFF;
+}
+
+:host-context(.dark) .path-layer-2,
+:host-context(html.dark) .path-layer-2,
+.dark .path-layer-2 {
+  stroke: #E05263;
+}
+
 @keyframes floatRibbonFlow {
   0% {
     stroke-dashoffset: 0;

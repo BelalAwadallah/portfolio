@@ -3,11 +3,11 @@
 >
   <!-- Presentation Frame / Showcase Surface (7 cols on desktop) -->
   <div
-    class="lg:col-span-7 bg-white border border-border-light rounded-2xl shadow-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-maroon/30 hover:shadow-soft group"
+    class="lg:col-span-7 bg-bg-card border border-border-light rounded-2xl shadow-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-maroon/30 hover:shadow-soft group"
     [class.lg:order-2]="isReversed()"
   >
     <!-- Top Bar Framing Header -->
-    <div class="flex items-center justify-between px-5 py-3.5 bg-[#FAF8F6] border-b border-border-light">
+    <div class="flex items-center justify-between px-5 py-3.5 bg-bg-card-subtle border-b border-border-light">
       <div class="flex items-center gap-1.5" aria-hidden="true">
         <span class="w-2 h-2 rounded-full bg-maroon/70"></span>
         <span class="w-2 h-2 rounded-full bg-border-light"></span>
@@ -23,10 +23,10 @@
     </div>
 
     <!-- Inner Interface Canvas (Abstract Software Artifact) -->
-    <div class="p-6 sm:p-8 bg-[#FCFBFA] min-h-[300px] flex items-center justify-center">
+    <div class="p-6 sm:p-8 bg-bg-base min-h-[300px] flex items-center justify-center">
       @if (project().id === 1) {
         <!-- University Management System Abstract UI -->
-        <div class="w-full grid grid-cols-1 sm:grid-cols-12 gap-4 bg-white border border-border-light rounded-xl p-4 shadow-sm">
+        <div class="w-full grid grid-cols-1 sm:grid-cols-12 gap-4 bg-bg-card border border-border-light rounded-xl p-4 shadow-sm">
           <div class="sm:col-span-4 border-b sm:border-b-0 sm:border-r border-border-light pb-3 sm:pb-0 sm:pr-3 flex flex-col gap-2">
             <div class="flex items-center gap-2 text-xs p-2 rounded-md bg-maroon/10 text-maroon font-semibold">
               <i class="pi pi-th-large text-xs" aria-hidden="true"></i>
@@ -75,7 +75,7 @@
         </div>
       } @else if (project().id === 2) {
         <!-- E-Commerce Application Abstract UI -->
-        <div class="w-full flex flex-col gap-4 bg-white border border-border-light rounded-xl p-4 shadow-sm">
+        <div class="w-full flex flex-col gap-4 bg-bg-card border border-border-light rounded-xl p-4 shadow-sm">
           <div class="flex items-center justify-between gap-4">
             <div class="flex-1 flex items-center gap-2 px-3 py-2 bg-bg-base rounded-lg text-xs text-text-secondary">
               <i class="pi pi-search text-xs" aria-hidden="true"></i>
@@ -118,7 +118,7 @@
         </div>
       } @else {
         <!-- Weather Dashboard Abstract UI -->
-        <div class="w-full flex flex-col gap-5 bg-white border border-border-light rounded-xl p-5 shadow-sm">
+        <div class="w-full flex flex-col gap-5 bg-bg-card border border-border-light rounded-xl p-5 shadow-sm">
           <div class="flex items-start justify-between">
             <div>
               <div class="text-xs text-text-muted mb-1">Cairo, Egypt · Local Weather Station</div>
@@ -184,13 +184,13 @@
       @for (tech of project().stack; track tech) {
         <p-tag
           [value]="tech"
-          styleClass="!bg-white !text-text-primary !border !border-border-light !font-medium !px-3 !py-1 !text-xs !rounded-full hover:!border-maroon hover:!text-maroon transition-colors cursor-default"
+          styleClass="!bg-bg-card !text-text-primary !border !border-border-light !font-medium !px-3 !py-1 !text-xs !rounded-full hover:!border-maroon hover:!text-maroon transition-colors cursor-default"
         />
       }
     </div>
 
     <!-- Standout Performance / Architecture Metrics -->
-    <div class="bg-white/80 border border-border-light rounded-xl p-5 mb-6">
+    <div class="bg-bg-card/80 border border-border-light rounded-xl p-5 mb-6">
       <h4 class="text-xs font-mono font-bold tracking-wider text-maroon m-0 mb-3.5">
         ENGINEERING METRICS &amp; ARCHITECTURE
       </h4>

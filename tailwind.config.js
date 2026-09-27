@@ -1,26 +1,28 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     "./src/**/*.{html,ts,scss}",
   ],
   theme: {
     extend: {
       colors: {
-        'bg-base': '#F7F4F2',
-        'bg-card': '#FFFFFF',
-        'text-primary': '#1A1A1A',
-        'text-secondary': '#707070',
-        'text-muted': '#96918D',
+        'bg-base': 'rgb(var(--bg-base-rgb) / <alpha-value>)',
+        'bg-card': 'rgb(var(--bg-card-rgb) / <alpha-value>)',
+        'bg-card-subtle': 'var(--bg-card-subtle)',
+        'text-primary': 'var(--text-primary)',
+        'text-secondary': 'var(--text-secondary)',
+        'text-muted': 'var(--text-muted)',
         'maroon': {
-          DEFAULT: '#3C1516',
-          hover: '#512024',
+          DEFAULT: 'var(--accent-maroon)',
+          hover: 'var(--accent-maroon-hover)',
           dark: '#2B0E0F',
           light: '#5A1F21'
         },
-        'border-light': '#E5E1DD',
-        'dark-surface': '#1A1A1A',
-        'dark-surface-soft': '#292323',
-        'dark-text': '#F5F0EC',
+        'border-light': 'var(--border-light)',
+        'dark-surface': 'var(--dark-surface)',
+        'dark-surface-soft': 'var(--dark-surface-soft)',
+        'dark-text': 'var(--dark-text)',
       },
       fontFamily: {
         serif: ['"Playfair Display"', 'Georgia', 'serif'],

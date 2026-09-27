@@ -1,0 +1,77 @@
+@if (variant() === 'icon') {
+  <button
+    type="button"
+    (click)="toggle()"
+    class="theme-toggle-btn"
+    [class.is-dark]="isDark()"
+    [attr.aria-label]="isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+    [title]="isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+  >
+    <div class="icon-stage" aria-hidden="true">
+      <!-- Sun Icon -->
+      <svg
+        class="sun-icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="12" r="4.5"></circle>
+        <path d="M12 2v2"></path>
+        <path d="M12 20v2"></path>
+        <path d="m4.93 4.93 1.41 1.41"></path>
+        <path d="m17.66 17.66 1.41 1.41"></path>
+        <path d="M2 12h2"></path>
+        <path d="M20 12h2"></path>
+        <path d="m6.34 17.66-1.41 1.41"></path>
+        <path d="m19.07 4.93-1.41 1.41"></path>
+      </svg>
+
+      <!-- Moon Icon -->
+      <svg
+        class="moon-icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        <path class="moon-star-1" d="M19 4v2"></path>
+        <path class="moon-star-2" d="M20 5h-2"></path>
+      </svg>
+    </div>
+    <span class="sr-only">{{ isDark() ? 'Dark mode enabled' : 'Light mode enabled' }}</span>
+  </button>
+} @else {
+  <!-- Pill variant with label for mobile drawer -->
+  <button
+    type="button"
+    (click)="toggle()"
+    class="theme-toggle-pill"
+    [class.is-dark]="isDark()"
+    [attr.aria-label]="isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+  >
+    <div class="pill-icon-box">
+      @if (isDark()) {
+        <svg class="w-4 h-4 text-[#F59E0B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+        </svg>
+      } @else {
+        <svg class="w-4 h-4 text-maroon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        </svg>
+      }
+    </div>
+    <span class="pill-label font-medium text-xs">
+      {{ isDark() ? 'Switch to Light Mode' : 'Switch to Dark Mode' }}
+    </span>
+    <span class="pill-badge text-[10px] font-mono px-2 py-0.5 rounded-full">
+      {{ isDark() ? 'DARK' : 'LIGHT' }}
+    </span>
+  </button>
+}

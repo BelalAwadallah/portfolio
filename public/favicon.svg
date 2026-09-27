@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4E1C1F" />
+      <stop offset="50%" stop-color="#3C1516" />
+      <stop offset="100%" stop-color="#1E0708" />
+    </linearGradient>
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF0D0" />
+      <stop offset="30%" stop-color="#E5C07B" />
+      <stop offset="70%" stop-color="#C59A45" />
+      <stop offset="100%" stop-color="#8C6518" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.55" />
+    </filter>
+  </defs>
+
+  <!-- Rounded Squircle Base -->
+  <rect x="48" y="48" width="928" height="928" rx="220" ry="220" fill="url(#bg-grad)" />
+  
+  <!-- Outer Gold Rim -->
+  <rect x="48" y="48" width="928" height="928" rx="220" ry="220" fill="none" stroke="url(#gold-grad)" stroke-width="18" />
+  
+  <!-- Inner Subtle Accent Line -->
+  <rect x="70" y="70" width="884" height="884" rx="202" ry="202" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-opacity="0.18" />
+
+  <!-- B Monogram and Golden Accent Dot -->
+  <g filter="url(#shadow)">
+    <path d="M 267,308 L 267,329 L 276,330 L 298,335 L 312,341 L 321,349 L 324,358 L 324,647 L 320,658 L 314,664 L 307,668 L 296,671 L 267,674 L 267,695 L 504,695 L 528,693 L 559,688 L 574,684 L 593,677 L 612,667 L 620,661 L 630,651 L 636,643 L 642,632 L 647,617 L 649,605 L 649,578 L 648,572 L 644,558 L 639,548 L 633,539 L 620,525 L 603,513 L 587,505 L 571,499 L 553,494 L 538,491 L 532,491 L 526,489 L 527,484 L 538,482 L 560,475 L 588,462 L 602,452 L 613,441 L 618,434 L 624,422 L 627,412 L 628,406 L 628,382 L 626,372 L 623,363 L 618,353 L 613,346 L 603,336 L 590,327 L 577,321 L 554,314 L 522,309 L 509,308 Z M 422,505 L 435,504 L 459,504 L 475,506 L 493,511 L 507,518 L 514,523 L 525,534 L 531,543 L 535,551 L 539,564 L 541,576 L 541,599 L 539,613 L 535,626 L 532,633 L 525,644 L 513,656 L 506,661 L 496,666 L 482,670 L 473,671 L 454,670 L 446,668 L 435,663 L 424,653 L 421,646 Z M 485,338 L 496,344 L 508,355 L 514,364 L 519,376 L 522,392 L 522,410 L 519,426 L 515,437 L 507,450 L 495,462 L 481,470 L 473,473 L 453,477 L 435,478 L 421,477 L 422,333 L 456,332 L 476,335 Z" fill="#FFFFFF" fill-rule="evenodd" />
+    <circle cx="737" cy="658" r="38" fill="url(#gold-grad)" stroke="#FFF4D9" stroke-width="4" />
+  </g>
+</svg>

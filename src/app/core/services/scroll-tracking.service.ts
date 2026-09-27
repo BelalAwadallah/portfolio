@@ -114,8 +114,8 @@ export class ScrollTrackingService {
           }
         },
         {
-          rootMargin: '0px 0px -80px 0px',
-          threshold: 0.1
+          rootMargin: '100px 0px 100px 0px',
+          threshold: 0
         }
       );
     });
@@ -134,15 +134,9 @@ export class ScrollTrackingService {
    * Observe cards and items for the one-time scroll reveal animation
    */
   registerRevealElement(element: HTMLElement): void {
-    if (this.prefersReducedMotion()) {
-      element.classList.add('is-revealed');
-      return;
-    }
-
+    element.classList.add('is-revealed');
     if (this.revealObserver) {
       this.revealObserver.observe(element);
-    } else {
-      element.classList.add('is-revealed');
     }
   }
 

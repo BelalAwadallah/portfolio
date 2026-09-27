@@ -2,8 +2,8 @@
   <!-- Dynamic blurred background layer that scrolls with header without trapping fixed modal children -->
   <div
     class="absolute inset-0 transition-all duration-300 pointer-events-none -z-10"
-    [class.bg-[#F7F4F2]/90]="!isScrolled()"
-    [class.bg-[#F7F4F2]/98]="isScrolled()"
+    [class.bg-bg-base/90]="!isScrolled()"
+    [class.bg-bg-base/98]="isScrolled()"
     [class.backdrop-blur-md]="true"
     [class.border-b]="true"
     [class.border-border-light]="isScrolled()"
@@ -19,7 +19,13 @@
       class="flex items-center gap-2.5 text-text-primary no-underline group cursor-pointer"
       aria-label="Belal Mahmoud Home"
     >
-      <span class="font-serif text-2xl font-bold text-maroon leading-none">B.</span>
+      <img
+        src="favicon.svg"
+        alt="Belal Mahmoud Logo"
+        width="34"
+        height="34"
+        class="w-[34px] h-[34px] rounded-lg shadow-sm transition-transform duration-300 group-hover:scale-105"
+      />
       <span class="text-sm font-semibold tracking-tight text-text-primary group-hover:text-maroon transition-colors duration-200">
         Belal Mahmoud
       </span>
@@ -48,7 +54,10 @@
     </ul>
 
     <!-- CTA & Mobile Trigger -->
-    <div class="flex items-center gap-4">
+    <div class="flex items-center gap-3">
+      <!-- Theme Toggle (Smooth Light/Dark switch) -->
+      <app-theme-toggle variant="icon" />
+
       <!-- PrimeNG Button for Desktop CTA -->
       <div class="hidden lg:block">
         <p-button
@@ -64,7 +73,7 @@
       <!-- Mobile Hamburger Button -->
       <button
         type="button"
-        class="lg:hidden p-2 w-11 h-11 flex flex-col justify-center items-center gap-1.5 rounded-md border border-border-light bg-white/80 text-text-primary cursor-pointer hover:bg-white transition-colors"
+        class="lg:hidden p-2 w-10 h-10 flex flex-col justify-center items-center gap-1.5 rounded-xl border border-border-light bg-bg-card/80 text-text-primary cursor-pointer hover:bg-bg-card transition-colors"
         (click)="toggleMenu()"
         [attr.aria-expanded]="isMenuOpen()"
         aria-label="Toggle navigation menu"
@@ -105,8 +114,14 @@
     aria-label="Mobile Navigation"
   >
     <div class="flex items-center justify-between pb-5 border-b border-border-light">
-      <div class="flex items-center gap-2">
-        <span class="font-serif text-2xl font-bold text-maroon">B.</span>
+      <div class="flex items-center gap-2.5">
+        <img
+          src="favicon.svg"
+          alt="Belal Mahmoud Logo"
+          width="28"
+          height="28"
+          class="w-7 h-7 rounded-lg shadow-sm"
+        />
         <span class="text-xs font-mono tracking-widest text-text-muted uppercase">Belal Mahmoud</span>
       </div>
       <button
@@ -143,7 +158,10 @@
       }
     </ul>
 
-    <div class="mt-auto flex flex-col gap-4 pt-4 border-t border-border-light">
+    <div class="mt-auto flex flex-col gap-3 pt-4 border-t border-border-light">
+      <!-- Mobile Theme Toggle Pill -->
+      <app-theme-toggle variant="pill" />
+
       <p-button
         label="Let's talk"
         icon="pi pi-arrow-up-right"

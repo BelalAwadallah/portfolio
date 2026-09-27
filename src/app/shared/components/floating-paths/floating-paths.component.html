@@ -1,5 +1,5 @@
 <div class="floating-paths-container absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-  <!-- Flowing Layer 1: Position 1 (Charcoal Flow, 36 curves) -->
+  <!-- Flowing Layer 1: Position 1 (Charcoal in Light / Radiant Silver in Dark) -->
   <div class="absolute inset-0">
     <svg
       class="floating-paths-svg w-full h-full"
@@ -11,17 +11,17 @@
       @for (path of positivePaths(); track path.id) {
         <path
           [attr.d]="path.d"
-          [attr.stroke]="path.strokeColor"
           [attr.stroke-width]="path.width"
-          class="animated-path"
+          class="animated-path path-layer-1"
           [style.animation-duration.s]="path.duration"
           [style.animation-delay.s]="path.delay"
+          [style.stroke-opacity]="path.opacity"
         />
       }
     </svg>
   </div>
 
-  <!-- Flowing Layer 2: Position -1 (Maroon Flow, 36 curves) -->
+  <!-- Flowing Layer 2: Position -1 (Maroon in Light / Ruby Crimson in Dark) -->
   <div class="absolute inset-0">
     <svg
       class="floating-paths-svg w-full h-full"
@@ -33,11 +33,11 @@
       @for (path of negativePaths(); track path.id) {
         <path
           [attr.d]="path.d"
-          [attr.stroke]="path.strokeColor"
           [attr.stroke-width]="path.width"
-          class="animated-path"
+          class="animated-path path-layer-2"
           [style.animation-duration.s]="path.duration"
           [style.animation-delay.s]="path.delay"
+          [style.stroke-opacity]="path.opacity"
         />
       }
     </svg>

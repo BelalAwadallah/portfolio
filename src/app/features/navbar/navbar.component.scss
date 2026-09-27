@@ -23,10 +23,11 @@
   height: 100vh;
   height: 100dvh;
   width: 85%;
-  max-width: 380px;
-  background-color: #FFFFFF;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border-left: 1px solid var(--border-light);
   z-index: 999;
-  box-shadow: -12px 0 40px rgba(0, 0, 0, 0.2);
+  box-shadow: -12px 0 40px rgba(0, 0, 0, 0.35);
   display: flex;
   flex-direction: column;
   transform: translateX(100%);

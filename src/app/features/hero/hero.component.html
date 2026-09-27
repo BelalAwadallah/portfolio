@@ -1,0 +1,130 @@
+<section id="home" class="relative min-h-[92vh] flex flex-col justify-center pt-16 pb-12 sm:pt-18 lg:pt-20 xl:pt-24 lg:pb-16 bg-bg-base overflow-visible" aria-label="Introduction">
+  <div class="relative z-10 max-w-6xl xl:max-w-7xl w-full mx-auto px-4 sm:px-6">
+    <!-- Grand Showcase Hero Card Container (Allows head to break out on top) -->
+    <div class="hero-card-container relative overflow-visible">
+      <!-- 1. Canvas Background with border, gradient & shadow -->
+      <div class="hero-canvas absolute inset-0 rounded-[32px] sm:rounded-[40px] overflow-hidden pointer-events-none">
+        <!-- Studio Lighting Backdrop Glow for the portrait -->
+        <div class="absolute top-0 right-0 w-full lg:w-3/5 h-full bg-[radial-gradient(circle_at_70%_35%,rgba(255,255,255,0.9)_0%,rgba(237,233,227,0.5)_55%,transparent_85%)]" aria-hidden="true"></div>
+
+        <!-- Flowing 3D Mathematical Background Paths (21st.dev Kokonutd ribbon curves) -->
+        <app-floating-paths />
+      </div>
+
+      <!-- 2. Interactive Grid Content -->
+      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 items-stretch">
+        <!-- Left Column: Editorial Information & Actions (7 cols) -->
+        <div class="lg:col-span-7 flex flex-col justify-between p-8 sm:p-12 lg:p-14 z-10">
+          <div>
+            <!-- Eyebrow -->
+            <div class="flex items-center gap-2 text-xs font-mono tracking-widest text-maroon font-semibold mb-6">
+              <span aria-hidden="true">—</span>
+              <span>FRONTEND DEVELOPER</span>
+            </div>
+
+            <!-- Headline -->
+            <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-tight leading-[1.06] m-0 mb-6 flex flex-col">
+              <span class="font-bold text-text-primary">Building Fast</span>
+              <span class="font-normal italic text-text-secondary">Reliable Interfaces</span>
+            </h1>
+
+            <!-- Subcopy -->
+            <p class="text-base sm:text-lg lg:text-xl text-text-secondary leading-relaxed max-w-xl mb-8">
+              I build fast, accessible, production-ready interfaces with Angular and React — from a design-first Figma workflow through to performance-tuned, tested code.
+            </p>
+
+            <!-- CTA Group with PrimeNG Buttons -->
+            <div class="flex flex-wrap items-center gap-4 mb-10">
+              <p-button
+                appLiquidGlass
+                [glassVariant]="'clear'"
+                label="View projects"
+                icon="pi pi-arrow-down"
+                iconPos="right"
+                (onClick)="scrollTo('projects')"
+                styleClass="liquid-glass-btn liquid-glass-clear !py-3.5 !px-8 !font-medium"
+                ariaLabel="View selected projects"
+              />
+
+              <p-button
+                appLiquidGlass
+                [glassVariant]="'maroon'"
+                label="Get in touch"
+                (onClick)="scrollTo('contact')"
+                styleClass="liquid-glass-btn liquid-glass-maroon !py-3.5 !px-8 !font-medium"
+                ariaLabel="Get in touch with Belal"
+              />
+            </div>
+          </div>
+
+          <!-- Stats Row at bottom of left column -->
+          <div class="pt-8 border-t border-border-light/70">
+            <div class="flex items-start gap-8">
+              @for (stat of stats(); track stat.id) {
+                <div class="flex flex-col gap-1">
+                  <div class="font-serif text-2xl sm:text-3xl lg:text-4xl font-semibold text-text-primary leading-none">
+                    {{ stat.value }}
+                  </div>
+                  <div class="text-xs sm:text-sm text-text-secondary leading-snug mt-1">
+                    {{ stat.label }}
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Seamless Cutout Portrait (Rising above card!) & Floating Glass Card (5 cols) -->
+        <div class="lg:col-span-5 relative flex flex-col justify-end items-center lg:items-end min-h-[420px] sm:min-h-[480px] lg:min-h-0 overflow-visible">
+          <!-- Portrait Cutout Image - Breakout above card top edge! -->
+          <img
+            #parallaxPortrait
+            src="assets/images/belal-cutout.png"
+            alt="Belal Mahmoud — Frontend Developer"
+            class="hero-portrait-img relative lg:absolute bottom-0 lg:bottom-auto lg:top-[-60px] xl:top-[-80px] right-auto lg:right-6 xl:right-10 z-10 w-auto max-w-[88%] sm:max-w-[76%] lg:max-w-none h-[400px] sm:h-[480px] lg:h-[640px] xl:h-[680px] rounded-br-[32px] sm:rounded-br-[40px] object-contain object-bottom select-none drop-shadow-[0_20px_35px_rgba(26,26,26,0.12)] pointer-events-auto"
+            loading="eager"
+            decoding="async"
+          />
+
+          <!-- Floating Glassmorphic Availability Micro-Card (Matches Sevora reference aesthetic) -->
+          <div
+            class="hero-floating-glass absolute bottom-4 sm:bottom-6 lg:top-[62%] xl:top-[60%] lg:bottom-auto right-4 sm:right-6 lg:right-auto lg:left-2 xl:left-4 z-20 text-white p-4 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:border-white/30 cursor-pointer group shadow-xl max-w-[210px] sm:max-w-[230px]"
+            (click)="scrollTo('contact')"
+            role="button"
+            tabindex="0"
+            (keydown.enter)="scrollTo('contact')"
+            aria-label="Available for freelance work, click to open contact"
+          >
+            <div class="flex items-center justify-between gap-3 mb-1.5">
+              <div class="flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_#10B981] animate-pulse" aria-hidden="true"></span>
+                <span class="text-[9px] font-mono tracking-widest text-[#A8A29E] uppercase font-semibold">
+                  SELECT PROJECT
+                </span>
+              </div>
+              <div class="w-6 h-6 rounded-full bg-white text-maroon flex items-center justify-center shrink-0 shadow-sm transition-transform duration-300 group-hover:scale-110">
+                <i class="pi pi-arrow-up-right text-[10px] font-bold" aria-hidden="true"></i>
+              </div>
+            </div>
+
+            <div class="font-serif text-xs sm:text-sm font-semibold text-white leading-tight mb-1">
+              Available for projects
+            </div>
+            <p class="text-[10px] text-stone-300 leading-snug m-0 hidden sm:block">
+              Open for freelance &amp; full-time roles
+            </p>
+          </div>
+          <!-- Tech Skills Pills — below portrait image -->
+          <div class="absolute bottom-16 left-0 right-0 flex flex-wrap justify-center lg:justify-start gap-1.5 px-4 z-30 hidden lg:flex">
+            @for (tech of techStack(); track tech) {
+              <p-tag
+                [value]="tech"
+                styleClass="!bg-white/90 !text-text-primary !border !border-border-light !font-medium !px-2.5 !py-0.5 !text-[10px] !rounded-full hover:!border-maroon hover:!text-maroon transition-all duration-200 cursor-default shadow-xs"
+              />
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

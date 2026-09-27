@@ -1,0 +1,488 @@
+@import "primeicons/primeicons.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base: #F7F4F2;
+  --bg-card: #FFFFFF;
+  --text-primary: #1A1A1A;
+  --text-secondary: #707070;
+  --text-muted: #96918D;
+  --accent-maroon: #3C1516;
+  --accent-maroon-hover: #512024;
+  --border-light: #E5E1DD;
+  --dark-surface: #1A1A1A;
+  --dark-surface-soft: #292323;
+  --dark-text: #F5F0EC;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+
+  --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.06);
+  --shadow-frame: 0 24px 48px -12px rgba(26, 26, 26, 0.08), 0 0 0 1px rgba(229, 225, 221, 0.6);
+
+  --ease-editorial: cubic-bezier(0.23, 1, 0.32, 1);
+  --duration-normal: 550ms;
+}
+
+*, *::before, *::after {                                                                                                                                                                                
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  background-color: var(--bg-base);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Defaults */
+h1, h2, h3, h4, .font-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* Custom Selection */
+::selection {
+  background-color: var(--accent-maroon);
+  color: #FFFFFF;                                                       
+}
+
+/* Presentation Frame (Jamie/device-mockup inspired showcase) */
+.presentation-frame {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-frame);
+  transition: transform 500ms var(--ease-editorial), box-shadow 500ms var(--ease-editorial), border-color 500ms var(--ease-editorial);
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: 0 28px 56px -12px rgba(26, 26, 26, 0.12), 0 0 0 1px rgba(60, 21, 22, 0.15);
+  }
+}
+
+/* Scroll Reveal Classes */
+.reveal-init {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 650ms var(--ease-editorial), transform 650ms var(--ease-editorial);
+  will-change: opacity, transform;
+
+  &.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger utilities */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+
+/* Custom Focus Ring for Accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent-maroon);
+  outline-offset: 3px;
+}
+
+/* PrimeNG Button Overrides - Editorial cream / burgundy palette */
+.p-button {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.02em !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 0.75rem 1.5rem !important;
+  transition: all 300ms var(--ease-editorial) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  cursor: pointer !important;
+
+  .p-button-label {
+    color: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+  }
+
+  .p-button-icon {
+    color: inherit !important;
+    font-size: inherit !important;
+  }
+}
+
+/* 1. Solid Primary Buttons (when not outlined and not text) */
+.p-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-link):not(.liquid-glass-btn):not(.liquid-glass-clear):not(.liquid-glass-maroon) {
+  background-color: var(--accent-maroon) !important;
+  border: 1px solid var(--accent-maroon) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(60, 21, 22, 0.18) !important;
+
+  &:hover {
+    background-color: var(--accent-maroon-hover) !important;
+    border-color: var(--accent-maroon-hover) !important;
+    color: #FFFFFF !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 20px rgba(60, 21, 22, 0.25) !important;
+  }
+}
+
+/* 2. Outlined Buttons - default text color is dark primary text */
+.p-button.p-button-outlined {
+  background-color: transparent !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-light) !important;
+  box-shadow: none !important;
+
+  &:hover {
+    background-color: rgba(60, 21, 22, 0.04) !important;
+    border-color: var(--text-primary) !important;
+    color: var(--accent-maroon) !important;
+    transform: translateY(-2px) !important;
+  }
+}
+
+/* 3. Text / Ghost Buttons - default text color is dark primary text */
+.p-button.p-button-text {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: var(--text-primary) !important;
+  box-shadow: none !important;
+
+  &:hover {
+    background-color: rgba(60, 21, 22, 0.05) !important;
+    color: var(--accent-maroon) !important;
+  }
+}
+
+/* 4. Support custom Tailwind color overrides on buttons (e.g. !text-maroon, !border-maroon, etc.) */
+.p-button {
+  &.\!text-maroon {
+    color: var(--accent-maroon) !important;
+  }
+  &.\!text-text-primary {
+    color: var(--text-primary) !important;
+  }
+  &.\!text-white {
+    color: #FFFFFF !important;
+  }
+  &.\!border-maroon {
+    border-color: var(--accent-maroon) !important;
+  }
+  &.\!border-border-light {
+    border-color: var(--border-light) !important;
+  }
+
+  /* Support hover state utility overrides */
+  &:hover {
+    &.hover\:\!bg-maroon {
+      background-color: var(--accent-maroon) !important;
+    }
+    &.hover\:\!text-white {
+      color: #FFFFFF !important;
+    }
+    &.hover\:\!text-maroon {
+      color: var(--accent-maroon) !important;
+    }
+    &.hover\:\!text-maroon-hover {
+      color: var(--accent-maroon-hover) !important;
+    }
+    &.hover\:\!border-maroon {
+      border-color: var(--accent-maroon) !important;
+    }
+    &.hover\:\!border-text-primary {
+      border-color: var(--text-primary) !important;
+    }
+  }
+}
+
+/* 5. Liquid Glass Button System
+   Authentic 3D glass bead optics with cursor-reactive liquid glow matching site theme */
+p-button {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+button.liquid-glass-btn,
+.p-button.liquid-glass-btn,
+a.liquid-glass-btn {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 9999px !important;
+  padding: 0.85rem 2.2rem !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
+  text-decoration: none !important;
+  overflow: hidden !important; /* Contain ripple inside pill shape */
+  isolation: isolate !important;
+  cursor: pointer !important;
+  transition: transform 300ms var(--ease-editorial), box-shadow 300ms var(--ease-editorial), border-color 300ms var(--ease-editorial) !important;
+  will-change: transform;
+
+  /* Hide PrimeNG ripple ink effect that causes the button to expand on tap */
+  .p-ink {
+    display: none !important;
+  }
+
+  /* Outer Liquid Glow Aura - uses clip-path workaround since overflow:hidden is needed to contain ripple */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -32px;
+    border-radius: 9999px;
+    pointer-events: none;
+    z-index: -1;
+    filter: blur(24px);
+    opacity: var(--liquid-opacity, 0);
+    transition: opacity 280ms cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateZ(0);
+    will-change: opacity, background;
+    /* Escape overflow:hidden by using a clip that extends beyond bounds */
+    clip-path: none;
+    overflow: visible;
+  }
+
+  /* Inner Refraction Glow (Shines through the glass right under cursor) */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 1;
+    opacity: var(--liquid-opacity, 0);
+    transition: opacity 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Ensure text & icons remain crisp above glass and glow */
+  > *,
+  .p-button-label,
+  .p-button-icon {
+    position: relative;
+    z-index: 2;
+    transition: color 250ms ease, transform 250ms ease;
+  }
+
+  &:hover {
+    transform: translateY(-2px) scale(1.02) !important;
+  }
+
+  &:active {
+    transform: translateY(0.5px) scale(0.985) !important;
+  }
+}
+
+/* Variant 1: Clear Frosted Liquid Glass (Exact 1:1 Match to User Reference) */
+button.liquid-glass-clear,
+.p-button.liquid-glass-clear,
+a.liquid-glass-clear {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(250, 247, 245, 0.72) 100%) !important;
+  backdrop-filter: blur(20px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(190%) !important;
+  color: var(--text-primary) !important;
+  
+  /* Precision Glass Meniscus Edges: crisp top specular arc, dark-refracted left rim */
+  border-top: 1.5px solid rgba(255, 255, 255, 0.95) !important;
+  border-left: 1.5px solid rgba(0, 0, 0, 0.18) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.7) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  
+  /* Curvature shadow: dark upper-left meniscus arc + bottom ambient drop shadow */
+  box-shadow: 
+    inset 0 1.5px 2px rgba(255, 255, 255, 1),
+    inset 1.5px 1px 3px rgba(0, 0, 0, 0.18),
+    inset 0 -1.5px 2px rgba(0, 0, 0, 0.05),
+    0 12px 32px -4px rgba(60, 21, 22, 0.09),
+    0 2px 8px rgba(0, 0, 0, 0.04) !important;
+
+  .p-button-label {
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+  }
+
+  .p-button-icon {
+    color: var(--accent-maroon) !important;
+  }
+
+  /* Outer liquid glowing aura (Vibrant Wine Maroon / Luminous Ruby) */
+  &::before {
+    background: radial-gradient(
+      circle 135px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(235, 45, 80, 0.92) 0%,
+      rgba(185, 35, 70, 0.68) 28%,
+      rgba(120, 25, 40, 0.42) 55%,
+      rgba(60, 21, 22, 0.16) 75%,
+      transparent 100%
+    );
+  }
+
+  /* Inner liquid refraction (Refracts through the frosted glass body) */
+  &::after {
+    background: radial-gradient(
+      circle 95px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(235, 55, 90, 0.35) 0%,
+      rgba(175, 35, 65, 0.18) 45%,
+      transparent 75%
+    );
+    mix-blend-mode: multiply;
+  }
+
+  &:hover {
+    border-top-color: #FFFFFF !important;
+    box-shadow: 
+      inset 0 2px 3px rgba(255, 255, 255, 1),
+      inset 2px 1.5px 4px rgba(0, 0, 0, 0.22),
+      inset 0 -2px 3px rgba(0, 0, 0, 0.08),
+      0 16px 38px -4px rgba(60, 21, 22, 0.16),
+      0 4px 12px rgba(0, 0, 0, 0.06) !important;
+  }
+}
+
+/* Variant 2: Deep Maroon Liquid Glass */
+button.liquid-glass-maroon,
+.p-button.liquid-glass-maroon,
+a.liquid-glass-maroon {
+  background: linear-gradient(135deg, rgba(60, 21, 22, 0.94) 0%, rgba(42, 13, 14, 0.9) 100%) !important;
+  backdrop-filter: blur(20px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(190%) !important;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3) !important;
+  color: #FFFFFF !important;
+
+  box-shadow: 
+    inset 0 1.5px 2px rgba(255, 255, 255, 0.38),
+    inset 0 -2px 5px rgba(0, 0, 0, 0.55),
+    0 12px 32px -4px rgba(60, 21, 22, 0.35),
+    0 2px 8px rgba(0, 0, 0, 0.1) !important;
+
+  .p-button-label,
+  .p-button-icon {
+    color: #FFFFFF !important;
+    font-weight: 500 !important;
+  }
+
+  /* Outer liquid glowing aura (Radiant Ruby / Rose Crimson) */
+  &::before {
+    background: radial-gradient(
+      circle 140px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(255, 60, 100, 0.95) 0%,
+      rgba(200, 45, 80, 0.72) 28%,
+      rgba(125, 25, 40, 0.45) 55%,
+      rgba(60, 21, 22, 0.18) 75%,
+      transparent 100%
+    );
+  }
+
+  /* Inner liquid refraction */
+  &::after {
+    background: radial-gradient(
+      circle 85px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(255, 140, 170, 0.4) 0%,
+      rgba(235, 55, 90, 0.2) 50%,
+      transparent 80%
+    );
+    mix-blend-mode: screen;
+  }
+
+  &:hover {
+    border-top-color: rgba(255, 255, 255, 0.55) !important;
+    box-shadow: 
+      inset 0 2px 3px rgba(255, 255, 255, 0.5),
+      inset 0 -2px 5px rgba(0, 0, 0, 0.6),
+      0 18px 42px -4px rgba(60, 21, 22, 0.45),
+      0 4px 14px rgba(0, 0, 0, 0.15) !important;
+  }
+}
+
+/* 6. Visibility fix for buttons inside dark surfaces */
+.bg-dark-surface,
+[class*="bg-dark"] {
+  .p-button.p-button-outlined,
+  .p-button.p-button-text {
+    color: #FFFFFF !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+
+    .p-button-label,
+    .p-button-icon {
+      color: #FFFFFF !important;
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.12) !important;
+      color: #FFFFFF !important;
+      border-color: rgba(255, 255, 255, 0.4) !important;
+
+      .p-button-label,
+      .p-button-icon {
+        color: #FFFFFF !important;
+      }
+    }
+  }
+}
+
+.p-tooltip {
+  .p-tooltip-text {
+    background-color: var(--dark-surface) !important;
+    color: var(--dark-text) !important;
+    font-size: 0.75rem !important;
+    padding: 0.375rem 0.75rem !important;
+    border-radius: var(--radius-sm) !important;
+    box-shadow: var(--shadow-soft) !important;
+  }
+  .p-tooltip-arrow {
+    border-top-color: var(--dark-surface) !important;
+  }
+}
+
+/* Reduced Motion Safety */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-init {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .personal-portrait-fixed {
+    position: static !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

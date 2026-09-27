@@ -1,0 +1,84 @@
+<section id="about" class="py-20 lg:py-28 bg-white border-y border-border-light relative" aria-label="About Belal Mahmoud">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <!-- Left Column: Architectural Portrait Framing (5 cols) -->
+      <div class="lg:col-span-5 lg:sticky lg:top-24 reveal-target reveal-init">
+        <div class="relative max-w-sm mx-auto">
+          <!-- Offset Architectural Dashed Border -->
+          <div class="absolute -inset-3 border border-dashed border-maroon/25 rounded-3xl pointer-events-none" aria-hidden="true"></div>
+
+          <!-- Portrait Image -->
+          <app-personal-portrait
+            mode="inline"
+            cropVariant="about"
+            altText="Belal Mahmoud in studio portrait crop"
+          />
+
+          <!-- Caption -->
+          <div class="mt-4 flex items-center justify-center gap-2 text-xs font-mono tracking-wider text-text-muted">
+            <span class="w-1.5 h-1.5 rounded-full bg-maroon"></span>
+            <span>BELAL MAHMOUD — FRONTEND ENGINEER</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Editorial Biography & Credentials (7 cols) -->
+      <div class="lg:col-span-7 flex flex-col">
+        <!-- Eyebrow -->
+        <div class="flex items-center gap-2 text-xs font-mono tracking-widest text-maroon font-semibold mb-4 reveal-target reveal-init">
+          <span aria-hidden="true">—</span>
+          <span>BACKGROUND &amp; PHILOSOPHY</span>
+        </div>
+
+        <!-- Headline -->
+        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.18] text-text-primary mb-8 reveal-target reveal-init delay-100">
+          Frontend development, built on structure, performance, and clarity.
+        </h2>
+
+        <!-- Biography Paragraphs -->
+        <div class="flex flex-col gap-5 text-base sm:text-lg text-text-secondary leading-relaxed mb-10 reveal-target reveal-init delay-200">
+          <p class="m-0">
+            I am a Frontend Developer with a B.Sc. in Information Technology (graduated with <strong class="text-text-primary font-semibold">Excellent, With Honors</strong>) and hands-on experience building production interfaces across Angular 17+/21 and React. My engineering practice centers on architectural discipline: building maintainable component hierarchies, enforcing type safety, and translating complex product requirements into fast, accessible web applications.
+          </p>
+          <p class="m-0">
+            Rather than relying on superficial styling, I focus on the structural mechanics that make applications scale: <strong class="text-text-primary font-semibold">OnPush change detection</strong>, granular <strong class="text-text-primary font-semibold">lazy loading</strong>, <strong class="text-text-primary font-semibold">reactive RxJS pipelines</strong> (such as <code class="text-maroon bg-bg-base px-1.5 py-0.5 rounded text-sm font-mono">debounceTime</code>, <code class="text-maroon bg-bg-base px-1.5 py-0.5 rounded text-sm font-mono">switchMap</code>, and <code class="text-maroon bg-bg-base px-1.5 py-0.5 rounded text-sm font-mono">shareReplay</code>), and strict <strong class="text-text-primary font-semibold">role-based access control (RBAC)</strong>. From early Figma wireframes to shipped code, every decision is measured by user experience and runtime efficiency.
+          </p>
+        </div>
+
+        <!-- Three Refined Fact Items -->
+        <div class="flex flex-col gap-4 mb-10 reveal-target reveal-init delay-300">
+          @for (fact of facts(); track fact.title) {
+            <div class="flex items-start gap-4 p-5 bg-bg-base border border-border-light rounded-xl hover:border-maroon/30 hover:bg-[#FAF8F6] transition-all duration-300 hover:translate-x-1 group">
+              <div class="w-11 h-11 rounded-lg bg-white border border-border-light flex items-center justify-center text-lg text-maroon shrink-0 group-hover:bg-maroon group-hover:text-white group-hover:border-maroon transition-all duration-300" aria-hidden="true">
+                <i [class]="fact.icon"></i>
+              </div>
+              <div class="flex flex-col gap-0.5">
+                <h3 class="text-base font-semibold text-text-primary m-0 font-sans">
+                  {{ fact.title }}
+                </h3>
+                <div class="text-sm font-medium text-maroon">
+                  {{ fact.subtitle }}
+                </div>
+                <div class="text-xs text-text-muted mt-0.5">
+                  {{ fact.detail }}
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- CTA with PrimeNG Button -->
+        <div class="reveal-target reveal-init delay-400">
+          <p-button
+            label="Let's build your product"
+            icon="pi pi-arrow-right"
+            iconPos="right"
+            [outlined]="true"
+            (onClick)="scrollToContact()"
+            styleClass="!border-maroon !text-maroon hover:!bg-maroon hover:!text-white !py-3 !px-6 !font-semibold !rounded-sm transition-all duration-300 group"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,227 @@
+<article
+  class="project-case-study reveal-init grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center py-6"
+>
+  <!-- Presentation Frame / Showcase Surface (7 cols on desktop) -->
+  <div
+    class="lg:col-span-7 bg-white border border-border-light rounded-2xl shadow-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-maroon/30 hover:shadow-soft group"
+    [class.lg:order-2]="isReversed()"
+  >
+    <!-- Top Bar Framing Header -->
+    <div class="flex items-center justify-between px-5 py-3.5 bg-[#FAF8F6] border-b border-border-light">
+      <div class="flex items-center gap-1.5" aria-hidden="true">
+        <span class="w-2 h-2 rounded-full bg-maroon/70"></span>
+        <span class="w-2 h-2 rounded-full bg-border-light"></span>
+        <span class="w-2 h-2 rounded-full bg-border-light"></span>
+      </div>
+      <div class="text-xs font-mono text-text-secondary tracking-wider">
+        <span class="text-maroon font-semibold">sys://</span>{{ project().category | lowercase }}
+      </div>
+      <div class="flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-maroon animate-pulse" aria-hidden="true"></span>
+        <span class="text-[11px] font-mono text-text-muted">Production Spec</span>
+      </div>
+    </div>
+
+    <!-- Inner Interface Canvas (Abstract Software Artifact) -->
+    <div class="p-6 sm:p-8 bg-[#FCFBFA] min-h-[300px] flex items-center justify-center">
+      @if (project().id === 1) {
+        <!-- University Management System Abstract UI -->
+        <div class="w-full grid grid-cols-1 sm:grid-cols-12 gap-4 bg-white border border-border-light rounded-xl p-4 shadow-sm">
+          <div class="sm:col-span-4 border-b sm:border-b-0 sm:border-r border-border-light pb-3 sm:pb-0 sm:pr-3 flex flex-col gap-2">
+            <div class="flex items-center gap-2 text-xs p-2 rounded-md bg-maroon/10 text-maroon font-semibold">
+              <i class="pi pi-th-large text-xs" aria-hidden="true"></i>
+              <span>Dashboard</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs p-2 rounded-md text-text-secondary">
+              <i class="pi pi-users text-xs" aria-hidden="true"></i>
+              <span>RBAC Matrix</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs p-2 rounded-md text-text-secondary">
+              <i class="pi pi-book text-xs" aria-hidden="true"></i>
+              <span>Curriculum</span>
+            </div>
+            <div class="mt-auto text-[10px] p-1.5 bg-bg-base rounded text-text-muted text-center font-mono">
+              Role: Faculty/Admin
+            </div>
+          </div>
+          <div class="sm:col-span-8 flex flex-col gap-3">
+            <div class="flex items-center justify-between text-xs">
+              <span class="font-medium text-text-primary">Faculty Portal / Course Distribution</span>
+              <p-tag value="HTTP Cache: ~40% Saved" styleClass="!bg-maroon/10 !text-maroon !text-[10px] !font-semibold !px-2 !py-0.5 !rounded-full" />
+            </div>
+            <div class="flex flex-col gap-1 text-xs">
+              <div class="grid grid-cols-4 p-1.5 font-semibold text-text-muted border-b border-border-light text-[11px]">
+                <span>Code</span>
+                <span class="col-span-2">Course Name</span>
+                <span>Status</span>
+              </div>
+              <div class="grid grid-cols-4 p-1.5 text-text-primary items-center rounded hover:bg-bg-base transition-colors">
+                <span class="font-mono font-medium">CS-402</span>
+                <span class="col-span-2">Advanced Architecture</span>
+                <span class="text-[10px] px-1.5 py-0.5 bg-bg-base rounded w-fit text-text-secondary">Active</span>
+              </div>
+              <div class="grid grid-cols-4 p-1.5 text-text-primary items-center rounded hover:bg-bg-base transition-colors">
+                <span class="font-mono font-medium">SE-301</span>
+                <span class="col-span-2">Distributed Systems</span>
+                <span class="text-[10px] px-1.5 py-0.5 bg-bg-base rounded w-fit text-text-secondary">Active</span>
+              </div>
+              <div class="grid grid-cols-4 p-1.5 items-center rounded bg-maroon/5 text-text-primary">
+                <span class="font-mono font-medium text-maroon">DS-204</span>
+                <span class="col-span-2 font-medium">Reactive State Pipelines</span>
+                <span class="text-[10px] px-1.5 py-0.5 bg-maroon/15 text-maroon font-semibold rounded w-fit">Syncing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      } @else if (project().id === 2) {
+        <!-- E-Commerce Application Abstract UI -->
+        <div class="w-full flex flex-col gap-4 bg-white border border-border-light rounded-xl p-4 shadow-sm">
+          <div class="flex items-center justify-between gap-4">
+            <div class="flex-1 flex items-center gap-2 px-3 py-2 bg-bg-base rounded-lg text-xs text-text-secondary">
+              <i class="pi pi-search text-xs" aria-hidden="true"></i>
+              <span class="truncate">Search catalog... (300ms debounce active)</span>
+            </div>
+            <div class="flex items-center gap-1.5 px-3 py-2 bg-maroon text-white rounded-lg text-xs font-semibold shrink-0">
+              <i class="pi pi-shopping-bag text-xs" aria-hidden="true"></i>
+              <span>Cart (3)</span>
+            </div>
+          </div>
+          <div class="flex gap-2 overflow-x-auto pb-1">
+            <span class="text-[11px] px-2.5 py-1 rounded-full bg-dark-surface text-white shrink-0">All Items</span>
+            <span class="text-[11px] px-2.5 py-1 rounded-full border border-border-light text-text-secondary shrink-0">Frontend</span>
+            <span class="text-[11px] px-2.5 py-1 rounded-full border border-border-light text-text-secondary shrink-0">Design</span>
+            <span class="text-[11px] px-2.5 py-1 rounded-full border border-border-light text-text-secondary shrink-0">Architecture</span>
+          </div>
+          <div class="grid grid-cols-3 gap-3">
+            <div class="border border-border-light rounded-lg p-2 flex flex-col gap-2">
+              <div class="h-14 bg-bg-base rounded flex items-center justify-center">
+                <div class="w-3/5 h-0.5 bg-border-light"></div>
+              </div>
+              <div class="h-2 bg-[#D8D2CD] rounded w-3/4"></div>
+              <div class="h-1.5 bg-[#EAE6E2] rounded w-1/2"></div>
+            </div>
+            <div class="border border-border-light rounded-lg p-2 flex flex-col gap-2">
+              <div class="h-14 bg-bg-base rounded flex items-center justify-center">
+                <div class="w-3/5 h-0.5 bg-border-light"></div>
+              </div>
+              <div class="h-2 bg-[#D8D2CD] rounded w-3/4"></div>
+              <div class="h-1.5 bg-[#EAE6E2] rounded w-1/2"></div>
+            </div>
+            <div class="border border-maroon bg-maroon/5 rounded-lg p-2 flex flex-col gap-2">
+              <div class="h-14 bg-bg-base rounded flex items-center justify-center">
+                <span class="text-[10px] text-maroon font-semibold">Reactive Sync</span>
+              </div>
+              <div class="h-2 bg-[#D8D2CD] rounded w-3/4"></div>
+              <div class="h-1.5 bg-[#EAE6E2] rounded w-1/2"></div>
+            </div>
+          </div>
+        </div>
+      } @else {
+        <!-- Weather Dashboard Abstract UI -->
+        <div class="w-full flex flex-col gap-5 bg-white border border-border-light rounded-xl p-5 shadow-sm">
+          <div class="flex items-start justify-between">
+            <div>
+              <div class="text-xs text-text-muted mb-1">Cairo, Egypt · Local Weather Station</div>
+              <div class="text-3xl font-semibold text-text-primary">
+                24°C <span class="text-sm font-normal text-text-secondary ml-2">Clear Sky</span>
+              </div>
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <div class="text-[10px] font-mono text-maroon bg-maroon/10 px-2 py-0.5 rounded flex items-center gap-1.5">
+                <i class="pi pi-check text-[9px]"></i> catchError
+              </div>
+              <div class="text-[10px] font-mono text-maroon bg-maroon/10 px-2 py-0.5 rounded flex items-center gap-1.5">
+                <i class="pi pi-refresh text-[9px]"></i> retry(2)
+              </div>
+              <div class="text-[10px] font-mono text-maroon bg-maroon/10 px-2 py-0.5 rounded flex items-center gap-1.5">
+                <i class="pi pi-flag text-[9px]"></i> finalize
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="p-2.5 bg-bg-base rounded-lg flex flex-col gap-1">
+              <span class="text-[11px] text-text-muted">Humidity</span>
+              <span class="text-sm font-semibold text-text-primary">46%</span>
+            </div>
+            <div class="p-2.5 bg-bg-base rounded-lg flex flex-col gap-1">
+              <span class="text-[11px] text-text-muted">Atmosphere</span>
+              <span class="text-sm font-semibold text-text-primary">1014 hPa</span>
+            </div>
+            <div class="p-2.5 bg-bg-base rounded-lg flex flex-col gap-1">
+              <span class="text-[11px] text-text-muted">Wind Velocity</span>
+              <span class="text-sm font-semibold text-text-primary">14 km/h</span>
+            </div>
+            <div class="p-2.5 bg-maroon/10 border border-maroon/20 rounded-lg flex flex-col gap-1">
+              <span class="text-[11px] text-maroon font-medium">RxJS State</span>
+              <span class="text-xs font-semibold text-maroon truncate">BehaviorSubject</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Information Panel / Editorial Context (5 cols on desktop) -->
+  <div
+    class="lg:col-span-5 flex flex-col"
+    [class.lg:order-1]="isReversed()"
+  >
+    <div class="flex items-center gap-3.5 mb-3.5">
+      <span class="text-sm font-mono font-bold text-maroon">{{ project().number }}</span>
+      <span class="text-xs font-mono uppercase tracking-wider text-text-muted">{{ project().category }}</span>
+    </div>
+
+    <h3 class="font-serif text-3xl sm:text-4xl font-semibold text-text-primary m-0 mb-4 leading-tight">
+      {{ project().title }}
+    </h3>
+
+    <p class="text-sm sm:text-base text-text-secondary leading-relaxed m-0 mb-6">
+      {{ project().description }}
+    </p>
+
+    <!-- Tech Stack Tags with PrimeNG p-tag -->
+    <div class="flex flex-wrap gap-2 mb-6" aria-label="Technologies used">
+      @for (tech of project().stack; track tech) {
+        <p-tag
+          [value]="tech"
+          styleClass="!bg-white !text-text-primary !border !border-border-light !font-medium !px-3 !py-1 !text-xs !rounded-full hover:!border-maroon hover:!text-maroon transition-colors cursor-default"
+        />
+      }
+    </div>
+
+    <!-- Standout Performance / Architecture Metrics -->
+    <div class="bg-white/80 border border-border-light rounded-xl p-5 mb-6">
+      <h4 class="text-xs font-mono font-bold tracking-wider text-maroon m-0 mb-3.5">
+        ENGINEERING METRICS &amp; ARCHITECTURE
+      </h4>
+      <ul class="list-none p-0 m-0 flex flex-col gap-2.5">
+        @for (metric of project().metrics; track metric) {
+          <li class="flex items-start gap-2.5 text-xs sm:text-sm text-text-primary leading-snug">
+            <i class="pi pi-check-circle text-maroon text-xs mt-0.5 shrink-0" aria-hidden="true"></i>
+            <span>{{ metric }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <!-- Actions with PrimeNG Button -->
+    <div class="flex items-center gap-4">
+      @if (project().githubUrl) {
+        <a
+          [href]="project().githubUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="no-underline"
+        >
+          <p-button
+            label="View on GitHub"
+            icon="pi pi-arrow-up-right"
+            iconPos="right"
+            [text]="true"
+            styleClass="!p-0 !text-maroon hover:!text-maroon-hover !font-semibold !text-sm group"
+          />
+        </a>
+      }
+    </div>
+  </div>
+</article>

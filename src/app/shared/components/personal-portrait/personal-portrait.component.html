@@ -1,0 +1,23 @@
+<div
+  class="portrait-wrapper"
+  [class.portrait-fixed]="mode() === 'fixed' && !isMobile() && !prefersReducedMotion()"
+  [class.portrait-inline]="mode() === 'inline' || isMobile() || prefersReducedMotion()"
+  [class.crop-hero]="cropVariant() === 'hero'"
+  [class.crop-about]="cropVariant() === 'about'"
+  [class.crop-compact]="cropVariant() === 'compact'"
+  [ngStyle]="transformStyle()"
+>
+  <div class="portrait-frame">
+    <div class="portrait-inner">
+      <img
+        src="assets/images/belal-bw.jpg"
+        [alt]="altText()"
+        class="portrait-img"
+        loading="eager"
+        decoding="async"
+      />
+      <div class="portrait-film-grain" aria-hidden="true"></div>
+      <div class="portrait-light-sheen" aria-hidden="true"></div>
+    </div>
+  </div>
+</div>

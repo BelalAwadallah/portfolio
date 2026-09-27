@@ -1,0 +1,108 @@
+:host {
+  display: block;
+}
+
+.portrait-wrapper {
+  width: 100%;
+  max-width: 440px;
+
+  &.portrait-fixed {
+    position: fixed;
+    z-index: 20;
+    pointer-events: none;
+    will-change: transform, opacity, left, top;
+    transition: all 1400ms cubic-bezier(0.23, 1, 0.32, 1);
+    width: 380px;
+    height: 520px;
+  }
+
+  &.portrait-inline {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+.portrait-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 28px;
+  padding: 10px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(247, 244, 242, 0.6) 100%);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 24px 48px -12px rgba(26, 26, 26, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+}
+
+.portrait-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #1A1A1A;
+  aspect-ratio: 3 / 4;
+}
+
+.portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  filter: grayscale(100%) contrast(108%) brightness(98%);
+  transition: transform 700ms cubic-bezier(0.23, 1, 0.32, 1), filter 700ms cubic-bezier(0.23, 1, 0.32, 1);
+
+  &:hover {
+    filter: grayscale(100%) contrast(112%) brightness(100%);
+    transform: scale(1.02);
+  }
+}
+
+/* Crop variations for editorial rhythm */
+.crop-hero .portrait-img {
+  object-position: center 15%;
+}
+
+.crop-about .portrait-img {
+  object-position: center 15%;
+  transform: scale(1.02);
+}
+
+.crop-compact .portrait-img {
+  object-position: center 25%;
+}
+
+.portrait-film-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.8) 1px, transparent 0);
+  background-size: 4px 4px;
+}
+
+.portrait-light-sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.15) 100%);
+}
+
+@media (max-width: 1023px) {
+  .portrait-wrapper.portrait-fixed {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portrait-wrapper.portrait-fixed {
+    transition: none !important;
+    transform: none !important;
+    position: static !important;
+  }
+  .portrait-img {
+    transition: none !important;
+    transform: none !important;
+  }
+}

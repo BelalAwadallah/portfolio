@@ -1,0 +1,10 @@
+:host {
+  display: block;
+}
+
+/* Override PrimeNG placeholder color to be very subtle */
+:host ::ng-deep input::placeholder,
+:host ::ng-deep textarea::placeholder {
+  color: rgba(255, 255, 255, 0.18) !important;
+  opacity: 1;
+}

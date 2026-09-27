@@ -1,0 +1,45 @@
+<div class="floating-paths-container absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+  <!-- Flowing Layer 1: Position 1 (Charcoal Flow, 36 curves) -->
+  <div class="absolute inset-0">
+    <svg
+      class="floating-paths-svg w-full h-full"
+      viewBox="0 0 696 316"
+      fill="none"
+      preserveAspectRatio="xMidYMid slice"
+    >
+      <title>Background Paths Layer 1</title>
+      @for (path of positivePaths(); track path.id) {
+        <path
+          [attr.d]="path.d"
+          [attr.stroke]="path.strokeColor"
+          [attr.stroke-width]="path.width"
+          class="animated-path"
+          [style.animation-duration.s]="path.duration"
+          [style.animation-delay.s]="path.delay"
+        />
+      }
+    </svg>
+  </div>
+
+  <!-- Flowing Layer 2: Position -1 (Maroon Flow, 36 curves) -->
+  <div class="absolute inset-0">
+    <svg
+      class="floating-paths-svg w-full h-full"
+      viewBox="0 0 696 316"
+      fill="none"
+      preserveAspectRatio="xMidYMid slice"
+    >
+      <title>Background Paths Layer 2</title>
+      @for (path of negativePaths(); track path.id) {
+        <path
+          [attr.d]="path.d"
+          [attr.stroke]="path.strokeColor"
+          [attr.stroke-width]="path.width"
+          class="animated-path"
+          [style.animation-duration.s]="path.duration"
+          [style.animation-delay.s]="path.delay"
+        />
+      }
+    </svg>
+  </div>
+</div>

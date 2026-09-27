@@ -1,0 +1,160 @@
+<header class="sticky top-0 z-50 w-full transition-all duration-300">
+  <!-- Dynamic blurred background layer that scrolls with header without trapping fixed modal children -->
+  <div
+    class="absolute inset-0 transition-all duration-300 pointer-events-none -z-10"
+    [class.bg-[#F7F4F2]/90]="!isScrolled()"
+    [class.bg-[#F7F4F2]/98]="isScrolled()"
+    [class.backdrop-blur-md]="true"
+    [class.border-b]="true"
+    [class.border-border-light]="isScrolled()"
+    [class.border-transparent]="!isScrolled()"
+    [class.shadow-sm]="isScrolled()"
+  ></div>
+
+  <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between relative z-10" aria-label="Main Navigation">
+    <!-- Brand Mark -->
+    <a
+      href="#home"
+      (click)="$event.preventDefault(); navigateTo('home')"
+      class="flex items-center gap-2.5 text-text-primary no-underline group cursor-pointer"
+      aria-label="Belal Mahmoud Home"
+    >
+      <span class="font-serif text-2xl font-bold text-maroon leading-none">B.</span>
+      <span class="text-sm font-semibold tracking-tight text-text-primary group-hover:text-maroon transition-colors duration-200">
+        Belal Mahmoud
+      </span>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <ul class="hidden lg:flex items-center gap-8 list-none m-0 p-0" role="list">
+      @for (item of navItems; track item.id) {
+        <li>
+          <a
+            [href]="'#' + item.id"
+            (click)="$event.preventDefault(); navigateTo(item.id)"
+            class="relative py-1 text-sm font-medium transition-colors duration-200 no-underline cursor-pointer"
+            [class.text-maroon]="activeSection() === item.id"
+            [class.font-semibold]="activeSection() === item.id"
+            [class.text-text-secondary]="activeSection() !== item.id"
+            [class.hover:text-text-primary]="activeSection() !== item.id"
+          >
+            <span>{{ item.label }}</span>
+            @if (activeSection() === item.id) {
+              <span class="absolute -bottom-1 left-0 right-0 h-0.5 bg-maroon rounded-full" aria-hidden="true"></span>
+            }
+          </a>
+        </li>
+      }
+    </ul>
+
+    <!-- CTA & Mobile Trigger -->
+    <div class="flex items-center gap-4">
+      <!-- PrimeNG Button for Desktop CTA -->
+      <div class="hidden lg:block">
+        <p-button
+          label="Let's talk"
+          icon="pi pi-arrow-up-right"
+          iconPos="right"
+          (onClick)="navigateTo('contact')"
+          styleClass="!bg-maroon !border-maroon hover:!bg-maroon-hover !text-white !text-xs !font-semibold !px-4 !py-2.5 !rounded-sm !shadow-md transition-all duration-300 hover:-translate-y-0.5"
+          ariaLabel="Navigate to contact section"
+        />
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button
+        type="button"
+        class="lg:hidden p-2 w-11 h-11 flex flex-col justify-center items-center gap-1.5 rounded-md border border-border-light bg-white/80 text-text-primary cursor-pointer hover:bg-white transition-colors"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="isMenuOpen()"
+        aria-label="Toggle navigation menu"
+      >
+        <span
+          class="w-5 h-0.5 bg-text-primary rounded-full transition-transform duration-300"
+          [class.translate-y-2]="isMenuOpen()"
+          [class.rotate-45]="isMenuOpen()"
+        ></span>
+        <span
+          class="w-5 h-0.5 bg-text-primary rounded-full transition-opacity duration-300"
+          [class.opacity-0]="isMenuOpen()"
+        ></span>
+        <span
+          class="w-5 h-0.5 bg-text-primary rounded-full transition-transform duration-300"
+          [class.-translate-y-2]="isMenuOpen()"
+          [class.-rotate-45]="isMenuOpen()"
+        ></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer Backdrop (Full screen overlay) -->
+  @if (isMenuOpen()) {
+    <div
+      class="mobile-backdrop"
+      (click)="closeMenu()"
+      aria-hidden="true"
+    ></div>
+  }
+
+  <!-- Mobile Drawer Menu Panel (Solid opaque container) -->
+  <div
+    class="mobile-drawer p-6 flex flex-col"
+    [class.open]="isMenuOpen()"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Mobile Navigation"
+  >
+    <div class="flex items-center justify-between pb-5 border-b border-border-light">
+      <div class="flex items-center gap-2">
+        <span class="font-serif text-2xl font-bold text-maroon">B.</span>
+        <span class="text-xs font-mono tracking-widest text-text-muted uppercase">Belal Mahmoud</span>
+      </div>
+      <button
+        type="button"
+        (click)="closeMenu()"
+        class="w-10 h-10 rounded-full border border-border-light/70 bg-bg-base/70 hover:bg-bg-base flex items-center justify-center text-text-primary transition-colors cursor-pointer"
+        aria-label="Close menu"
+      >
+        <i class="pi pi-times text-sm" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <ul class="flex flex-col gap-2 py-6 list-none m-0 p-0 overflow-y-auto" role="list">
+      @for (item of navItems; track item.id) {
+        <li>
+          <a
+            [href]="'#' + item.id"
+            (click)="$event.preventDefault(); navigateTo(item.id)"
+            class="flex items-center justify-between py-3.5 px-3 rounded-xl border-b border-border-light/40 no-underline transition-all duration-200 hover:bg-bg-base/70 group"
+            [class.bg-maroon/5]="activeSection() === item.id"
+            [class.text-maroon]="activeSection() === item.id"
+            [class.font-semibold]="activeSection() === item.id"
+            [class.text-text-primary]="activeSection() !== item.id"
+          >
+            <span class="font-serif text-lg tracking-tight">{{ item.label }}</span>
+            <i
+              class="pi pi-arrow-right text-xs transition-transform duration-200 group-hover:translate-x-1"
+              [class.text-maroon]="activeSection() === item.id"
+              [class.text-text-muted]="activeSection() !== item.id"
+              aria-hidden="true"
+            ></i>
+          </a>
+        </li>
+      }
+    </ul>
+
+    <div class="mt-auto flex flex-col gap-4 pt-4 border-t border-border-light">
+      <p-button
+        label="Let's talk"
+        icon="pi pi-arrow-up-right"
+        iconPos="right"
+        (onClick)="navigateTo('contact')"
+        styleClass="w-full !bg-maroon !border-maroon hover:!bg-maroon-hover !text-white !py-3.5 !font-semibold !rounded-xl !shadow-md transition-all duration-200"
+      />
+      <div class="flex items-center justify-center gap-2 text-xs text-text-secondary py-1">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_#10B981] animate-pulse"></span>
+        <span class="font-medium">Open to freelance &amp; full-time roles</span>
+      </div>
+    </div>
+  </div>
+</header>

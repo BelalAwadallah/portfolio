@@ -1,0 +1,146 @@
+                                                                                                                                            :host {
+  display: block;
+}
+
+/* ── Section wrapper ─────────────────────────── */
+.tech-marquee-section {
+  background: var(--bg-base);
+  padding: 2rem 0 2.5rem;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  overflow: hidden;
+}
+
+/* ── Label row ───────────────────────────────── */
+.marquee-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  span {
+    font-family: 'Inter', monospace;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .marquee-line {
+    flex: 1;
+    max-width: 80px;
+    height: 1px;
+    background: var(--border-light);
+  }
+}
+
+/* ── Marquee outer wrapper ───────────────────── */
+.marquee-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fade edges */
+.marquee-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.marquee-fade-left {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-base) 0%, transparent 100%);
+}
+
+.marquee-fade-right {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-base) 0%, transparent 100%);
+}
+
+/* ── Marquee track ───────────────────────────── */
+.marquee-track {
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: max-content;
+
+  /* Infinite scroll: translate -50% = exactly one full set of icons */
+  animation: marquee-scroll 32s linear infinite;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── Individual skill item ───────────────────── */
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  cursor: default;
+
+  &:hover {
+    .skill-icon {
+      fill: var(--accent-maroon);
+      animation: icon-bounce 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards;
+      filter:
+        drop-shadow(0 0 6px rgba(140, 40, 40, 0.55))
+        drop-shadow(0 4px 14px rgba(60, 21, 22, 0.35));
+    }
+
+    .skill-name {
+      color: var(--accent-maroon);
+      transform: translateY(2px);
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes icon-bounce {
+  0%   { transform: translateY(0)    scale(1); }
+  20%  { transform: translateY(-10px) scale(1.18); }
+  40%  { transform: translateY(-4px)  scale(1.08); }
+  60%  { transform: translateY(-8px)  scale(1.14); }
+  80%  { transform: translateY(-2px)  scale(1.04); }
+  100% { transform: translateY(-5px)  scale(1.10); }
+}
+
+/* ── SVG icon ────────────────────────────────── */
+.skill-icon {
+  width: 2rem;
+  height: 2rem;
+  fill: #9C948F;
+  transition:
+    fill 300ms ease,
+    filter 300ms ease;
+  flex-shrink: 0;
+}
+
+/* ── Label under icon ────────────────────────── */
+.skill-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #B8B0A8;
+  white-space: nowrap;
+  transition: color 350ms cubic-bezier(0.23, 1, 0.32, 1);
+  text-transform: uppercase;
+}

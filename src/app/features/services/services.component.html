@@ -1,0 +1,72 @@
+<section id="services" class="py-20 lg:py-28 bg-bg-base relative" aria-label="Services and capabilities">
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Section Header -->
+    <div class="mb-16">
+      <div class="flex items-center gap-2 text-xs font-mono tracking-widest text-maroon font-semibold mb-3">
+        <span aria-hidden="true">—</span>
+        <span>SERVICES &amp; CAPABILITIES</span>
+      </div>
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+        <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-text-primary m-0">
+          What I build
+        </h2>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed max-w-lg m-0">
+          Specialized frontend engineering focused on architecture, performance, and pixel-accurate design fidelity.
+        </p>
+      </div>
+    </div>
+
+    <!-- Editorial Services Grid (Non-generic, staggered rhythm) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      @for (service of services(); track service.id; let idx = $index) {
+        <article
+          class="service-card reveal-init bg-white border border-border-light rounded-2xl p-8 sm:p-10 flex flex-col shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-maroon/30 hover:shadow-soft group"
+          [class.delay-100]="idx === 1"
+          [class.delay-200]="idx === 2"
+          [class.delay-300]="idx === 3"
+        >
+          <!-- Top Row: Number & Icon -->
+          <div class="flex items-center justify-between mb-8">
+            <span class="font-mono text-base font-semibold text-maroon tracking-wider">
+              {{ service.number }}
+            </span>
+            <div class="w-12 h-12 rounded-xl bg-bg-base border border-border-light flex items-center justify-center text-xl text-maroon group-hover:bg-maroon group-hover:text-white group-hover:border-maroon transition-all duration-300" aria-hidden="true">
+              <i [class]="service.icon"></i>
+            </div>
+          </div>
+
+          <!-- Body -->
+          <h3 class="font-serif text-2xl font-semibold text-text-primary mb-3 leading-snug">
+            {{ service.title }}
+          </h3>
+          <p class="text-sm sm:text-base text-text-secondary leading-relaxed mb-6 flex-1">
+            {{ service.description }}
+          </p>
+
+          <!-- Tags with PrimeNG p-tag -->
+          <div class="flex flex-wrap gap-2 mb-8" aria-label="Key competencies">
+            @for (tag of service.tags; track tag) {
+              <p-tag
+                [value]="tag"
+                styleClass="!bg-bg-base !text-text-secondary !border !border-border-light !text-[11px] !font-medium !px-2.5 !py-0.5 !rounded"
+              />
+            }
+          </div>
+
+          <!-- Card Bottom Action with PrimeNG Button -->
+          <div class="pt-5 border-t border-border-light/60">
+            <p-button
+              label="Discuss requirement"
+              icon="pi pi-arrow-up-right"
+              iconPos="right"
+              [text]="true"
+              (onClick)="scrollToContact()"
+              styleClass="!p-0 !text-text-primary hover:!text-maroon !text-sm !font-semibold group-hover:!text-maroon transition-colors"
+              ariaLabel="Inquire about {{ service.title }}"
+            />
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

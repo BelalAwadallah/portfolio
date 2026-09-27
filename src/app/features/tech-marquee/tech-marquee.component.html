@@ -1,0 +1,35 @@
+<section class="tech-marquee-section" aria-label="Technologies I work with">
+  <!-- Subtle label -->
+  <div class="marquee-label">
+    <span>TECH STACK</span>
+    <div class="marquee-line"></div>
+    <span>TOOLS & FRAMEWORKS</span>
+  </div>
+
+  <!-- Marquee Track -->
+  <div class="marquee-wrapper">
+    <!-- Left fade -->
+    <div class="marquee-fade marquee-fade-left" aria-hidden="true"></div>
+
+    <div class="marquee-track" aria-hidden="true">
+      <div class="marquee-content">
+        @for (skill of skillsLoop; track $index) {
+          <div class="skill-item" [title]="skill.name">
+            <svg
+              [attr.viewBox]="skill.viewBox || '0 0 24 24'"
+              xmlns="http://www.w3.org/2000/svg"
+              class="skill-icon"
+              aria-hidden="true"
+            >
+              <path [attr.d]="skill.svgPath" />
+            </svg>
+            <span class="skill-name">{{ skill.name }}</span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Right fade -->
+    <div class="marquee-fade marquee-fade-right" aria-hidden="true"></div>
+  </div>
+</section>

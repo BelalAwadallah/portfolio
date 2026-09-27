@@ -1,0 +1,32 @@
+<section id="projects" class="py-20 lg:py-28 bg-white border-y border-border-light relative" aria-label="Selected work and case studies">
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Header -->
+    <div class="mb-16">
+      <div class="flex items-center gap-2 text-xs font-mono tracking-widest text-maroon font-semibold mb-3">
+        <span aria-hidden="true">—</span>
+        <span>PORTFOLIO &amp; CASE STUDIES</span>
+      </div>
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+        <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-text-primary m-0">
+          Selected work
+        </h2>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed max-w-lg m-0">
+          A selection of interfaces and systems built with a focus on usability, performance, and maintainable frontend architecture.
+        </p>
+      </div>
+    </div>
+
+    <!-- Case Studies Collection -->
+    <div class="flex flex-col gap-12 lg:gap-16">
+      @for (project of projects(); track project.id; let i = $index) {
+        <app-project-card
+          [project]="project"
+          [isReversed]="i % 2 === 1"
+        />
+        @if (i < projects().length - 1) {
+          <p-divider styleClass="!my-6 !border-border-light/60" />
+        }
+      }
+    </div>
+  </div>
+</section>

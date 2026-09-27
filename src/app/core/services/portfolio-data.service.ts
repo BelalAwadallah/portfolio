@@ -17,7 +17,7 @@ export class PortfolioDataService {
   readonly email = 'belalawadallah891@gmail.com';
   readonly phone = '+20 109 616 2788';
   readonly phoneFormatted = '+20 109 616 2788';
-  readonly linkedinUrl = 'https://linkedin.com/in/belal-awadallah-3213b1288';
+  readonly linkedinUrl = 'https://www.linkedin.com/in/belal-awadallah-3213b1288/';
   readonly githubUrl = 'https://github.com/BelalAwadallah';
 
   readonly stats = signal<readonly Stat[]>([

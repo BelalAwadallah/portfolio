@@ -4,7 +4,8 @@ import {
   inject,
   ElementRef,
   AfterViewInit,
-  signal
+  signal,
+  computed
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -47,6 +48,27 @@ export class ContactComponent implements AfterViewInit {
   readonly senderEmail = signal<string>('');
   readonly projectBrief = signal<string>('');
   readonly isCopied = signal<boolean>(false);
+  readonly isDraftPrepared = signal<boolean>(false);
+  readonly isDraftCopied = signal<boolean>(false);
+
+  /**
+   * Reactive mailto URL synchronized with the DOM.
+   * Automatically encodes subject=Inquiry and the body parameter.
+   */
+  readonly mailtoUrl = computed(() => {
+    const email = this.email;
+    const brief = this.projectBrief().trim();
+    const name = this.senderName().trim();
+
+    // Default to clean mailto when no message or draft intent exists
+    if (!brief && !name && !this.isDraftPrepared()) {
+      return `mailto:${email}`;
+    }
+
+    const subject = 'Inquiry';
+    const body = brief || 'Hello Belal, I would like to discuss a frontend project.';
+    return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
 
   ngAfterViewInit(): void {
     const contactSection = this.el.nativeElement.querySelector('#contact');
@@ -64,13 +86,36 @@ export class ContactComponent implements AfterViewInit {
     }
   }
 
-  sendMailto(): void {
-    const name = encodeURIComponent(this.senderName() || 'Colleague / Client');
-    const brief = encodeURIComponent(this.projectBrief() || 'Hello Belal, I would like to discuss a frontend opportunity.');
-    const mailtoUrl = `mailto:${this.email}?subject=Project%20Inquiry%20from%20${name}&body=${brief}`;
-    if (typeof window !== 'undefined') {
-      window.location.href = mailtoUrl;
+  sendMailto(event?: Event): void {
+    if (event) {
+      event.preventDefault();
     }
+    // Activate in-page confirmation & preview state
+    this.isDraftPrepared.set(true);
+
+    // Concurrently trigger opening email client without navigating away or clearing inputs
+    if (typeof window !== 'undefined') {
+      const mailAnchor = document.createElement('a');
+      mailAnchor.href = this.mailtoUrl();
+      mailAnchor.rel = 'noopener noreferrer';
+      mailAnchor.click();
+    }
+  }
+
+  copyDraftToClipboard(): void {
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      const subject = 'Inquiry';
+      const body = this.projectBrief().trim() || 'Hello Belal, I would like to discuss a frontend project.';
+      const formatted = `To: ${this.email}\nSubject: ${subject}\n\n${body}`;
+      navigator.clipboard.writeText(formatted).then(() => {
+        this.isDraftCopied.set(true);
+        setTimeout(() => this.isDraftCopied.set(false), 2500);
+      });
+    }
+  }
+
+  resetDraft(): void {
+    this.isDraftPrepared.set(false);
   }
 
   scrollToTop(): void {

@@ -23,13 +23,13 @@ export class PortfolioDataService {
   readonly stats = signal<readonly Stat[]>([
     {
       id: 1,
-      value: '4+',
+      value: '10+',
       label: 'Projects delivered',
       detail: 'Production-ready web applications'
     },
     {
       id: 2,
-      value: '200+',
+      value: '500+',
       label: 'Training hours completed',
       detail: 'Advanced Angular & frontend engineering'
     },

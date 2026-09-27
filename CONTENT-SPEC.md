@@ -62,7 +62,7 @@ Reliable Interfaces
 | Number | Label |
 |---|---|
 | 4+ | Projects delivered |
-| 200+ | Training hours completed |
+| 500+ | Training hours completed |
 | Excellent | B.Sc. Information Technology, With Honors |
 
 **Floating card (bottom-right over photo):**

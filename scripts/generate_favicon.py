@@ -151,14 +151,14 @@ def generate_assets():
     </filter>
   </defs>
 
-  <!-- Rounded Squircle Base -->
-  <rect x="{pad}" y="{pad}" width="{size - pad*2}" height="{size - pad*2}" rx="{radius}" ry="{radius}" fill="url(#bg-grad)" />
+  <!-- Luxurious Circular Base -->
+  <circle cx="{size // 2}" cy="{size // 2}" r="{(size - pad*2) // 2}" fill="url(#bg-grad)" />
   
   <!-- Outer Gold Rim -->
-  <rect x="{pad}" y="{pad}" width="{size - pad*2}" height="{size - pad*2}" rx="{radius}" ry="{radius}" fill="none" stroke="url(#gold-grad)" stroke-width="{border_width}" />
+  <circle cx="{size // 2}" cy="{size // 2}" r="{(size - pad*2) // 2}" fill="none" stroke="url(#gold-grad)" stroke-width="{border_width}" />
   
   <!-- Inner Subtle Accent Line -->
-  <rect x="{inner_pad}" y="{inner_pad}" width="{size - inner_pad*2}" height="{size - inner_pad*2}" rx="{radius - border_width}" ry="{radius - border_width}" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-opacity="0.18" />
+  <circle cx="{size // 2}" cy="{size // 2}" r="{(size - inner_pad*2) // 2}" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-opacity="0.2" />
 
   <!-- B Monogram and Golden Accent Dot -->
   <g filter="url(#shadow)">

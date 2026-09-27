@@ -16,14 +16,14 @@
     </filter>
   </defs>
 
-  <!-- Rounded Squircle Base -->
-  <rect x="48" y="48" width="928" height="928" rx="220" ry="220" fill="url(#bg-grad)" />
+  <!-- Luxurious Circular Base -->
+  <circle cx="512" cy="512" r="464" fill="url(#bg-grad)" />
   
   <!-- Outer Gold Rim -->
-  <rect x="48" y="48" width="928" height="928" rx="220" ry="220" fill="none" stroke="url(#gold-grad)" stroke-width="18" />
+  <circle cx="512" cy="512" r="464" fill="none" stroke="url(#gold-grad)" stroke-width="18" />
   
   <!-- Inner Subtle Accent Line -->
-  <rect x="70" y="70" width="884" height="884" rx="202" ry="202" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-opacity="0.18" />
+  <circle cx="512" cy="512" r="442" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-opacity="0.2" />
 
   <!-- B Monogram and Golden Accent Dot -->
   <g filter="url(#shadow)">

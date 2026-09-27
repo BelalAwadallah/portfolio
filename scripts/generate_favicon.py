@@ -27,27 +27,25 @@ def generate_assets():
     bg_arr = np.dstack([r, g, b, a])
     base_img = Image.fromarray(bg_arr, 'RGBA')
 
-    # Mask for rounded squircle
+    # Mask for circular emblem
     mask = Image.new('L', (size, size), 0)
     mask_draw = ImageDraw.Draw(mask)
-    mask_draw.rounded_rectangle([pad, pad, size - pad, size - pad], radius=radius, fill=255)
+    mask_draw.ellipse([pad, pad, size - pad, size - pad], fill=255)
     base_img.putalpha(mask)
 
     # 2. Gold border
     border_draw = ImageDraw.Draw(base_img)
     # Gold border
-    border_draw.rounded_rectangle(
+    border_draw.ellipse(
         [pad, pad, size - pad, size - pad],
-        radius=radius,
         outline=(218, 175, 75, 235),
         width=border_width
     )
     # Inner subtle rim
     inner_pad = pad + border_width + 4
-    border_draw.rounded_rectangle(
+    border_draw.ellipse(
         [inner_pad, inner_pad, size - inner_pad, size - inner_pad],
-        radius=radius - border_width,
-        outline=(255, 255, 255, 35),
+        outline=(255, 255, 255, 45),
         width=3
     )
 

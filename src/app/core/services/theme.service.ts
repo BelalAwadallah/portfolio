@@ -20,15 +20,6 @@ export class ThemeService {
       const currentTheme = this.theme();
       this.applyTheme(currentTheme, true);
     });
-
-    // Listen to OS preference changes if user hasn't explicitly set one
-    if (typeof window !== 'undefined' && window.matchMedia) {
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (!localStorage.getItem(this.STORAGE_KEY)) {
-          this.theme.set(e.matches ? 'dark' : 'light');
-        }
-      });
-    }
   }
 
   toggleTheme(): void {
@@ -56,14 +47,11 @@ export class ThemeService {
       if (savedTheme === 'light' || savedTheme === 'dark') {
         return savedTheme;
       }
-
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
-      }
     } catch {
       // Fallback in environments without localStorage
     }
 
+    // Default to Light mode on first visit
     return 'light';
   }
 
